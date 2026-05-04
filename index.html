@@ -489,6 +489,7 @@
 
       .badge-area {
         display: grid;
+        min-width: 0;
         gap: 1.25rem;
         align-items: center;
       }
@@ -505,6 +506,12 @@
         box-shadow: 5px 5px 0 var(--ink);
       }
 
+      .badge-showcase img {
+        display: block;
+        width: min(280px, 100%);
+        height: auto;
+      }
+
       .badge-preview {
         display: block;
         width: 159px;
@@ -514,11 +521,13 @@
 
       .snippet {
         display: grid;
+        min-width: 0;
         gap: 0.8rem;
       }
 
       .code-copy {
         position: relative;
+        min-width: 0;
       }
 
       .code-copy pre {
@@ -620,6 +629,17 @@
         .section,
         .quote-band {
           padding: clamp(2.5rem, 9vw, 4rem) 0;
+        }
+
+        .badge-showcase {
+          min-height: 6rem;
+          padding: 1rem;
+          box-shadow: 3px 3px 0 var(--ink);
+        }
+
+        .code-copy pre {
+          padding: 2.85rem 0.85rem 0.85rem;
+          font-size: 0.78rem;
         }
 
         blockquote {
