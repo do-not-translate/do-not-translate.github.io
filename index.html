@@ -1,0 +1,900 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stop Translating My App</title>
+    <meta
+      name="description"
+      content="An open letter asking browsers, platforms, mirrors, AI tools, and extensions not to ship unreviewed automatic translations as official app localization."
+    />
+    <meta name="theme-color" content="#f7f8f5" />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8f5;
+        --paper: #ffffff;
+        --ink: #151713;
+        --muted: #5d665b;
+        --line: #d9dfd3;
+        --green: #14745f;
+        --red: #b72e25;
+        --yellow: #f1bd45;
+        --blue: #2f6fbb;
+        --shadow: 0 18px 48px rgba(21, 23, 19, 0.12);
+        --radius: 8px;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-size: 18px;
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration-color: rgba(20, 116, 95, 0.45);
+        text-decoration-thickness: 0.09em;
+        text-underline-offset: 0.18em;
+      }
+
+      a:hover {
+        color: var(--green);
+      }
+
+      code {
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: #f3f5ef;
+        padding: 0.1rem 0.32rem;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        font-size: 0.88em;
+      }
+
+      pre {
+        margin: 0;
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #10130f;
+        color: #f7f8f5;
+        padding: 1rem;
+        font-size: 0.86rem;
+        line-height: 1.55;
+      }
+
+      pre code {
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        color: inherit;
+        padding: 0;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid rgba(21, 23, 19, 0.09);
+        background: rgba(247, 248, 245, 0.88);
+        backdrop-filter: blur(14px);
+      }
+
+      .nav {
+        display: flex;
+        width: min(1120px, calc(100% - 32px));
+        min-height: 64px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin: 0 auto;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-weight: 800;
+        letter-spacing: 0;
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 2.2rem;
+        aspect-ratio: 1;
+        place-items: center;
+        border: 2px solid var(--ink);
+        border-radius: var(--radius);
+        background: var(--yellow);
+        box-shadow: 3px 3px 0 var(--ink);
+        font-size: 1.05rem;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 2.6rem;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--ink);
+        border-radius: var(--radius);
+        background: var(--ink);
+        color: #ffffff;
+        padding: 0.55rem 0.9rem;
+        box-shadow: 3px 3px 0 rgba(21, 23, 19, 0.18);
+        font-size: 0.95rem;
+        font-weight: 800;
+        line-height: 1.1;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      .button:hover {
+        color: #ffffff;
+        transform: translateY(-1px);
+      }
+
+      .button.secondary {
+        background: #ffffff;
+        color: var(--ink);
+      }
+
+      .button.secondary:hover {
+        color: var(--ink);
+      }
+
+      .hero {
+        display: grid;
+        width: min(1120px, calc(100% - 32px));
+        align-items: center;
+        gap: clamp(2rem, 6vw, 5rem);
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+        margin: 0 auto;
+        padding: clamp(2rem, 5vw, 4rem) 0;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0 0 1rem;
+        color: var(--green);
+        font-size: 0.82rem;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 0.7rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--green);
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        line-height: 1.05;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        max-width: 12ch;
+        font-size: clamp(3.2rem, 8vw, 7.4rem);
+      }
+
+      .hero-copy {
+        max-width: 41rem;
+        margin: 1.25rem 0 0;
+        color: var(--muted);
+        font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+        line-height: 1.45;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin-top: 2rem;
+      }
+
+      .mock-shell {
+        position: relative;
+        border: 2px solid var(--ink);
+        border-radius: var(--radius);
+        background: var(--paper);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .mock-top {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        border-bottom: 2px solid var(--ink);
+        background: #edf2e8;
+        padding: 0.72rem;
+      }
+
+      .dot {
+        width: 0.72rem;
+        aspect-ratio: 1;
+        border: 1.5px solid var(--ink);
+        border-radius: 50%;
+        background: var(--yellow);
+      }
+
+      .dot:nth-child(2) {
+        background: #f16b51;
+      }
+
+      .dot:nth-child(3) {
+        background: #64bfa7;
+      }
+
+      .mock-url {
+        min-width: 0;
+        margin-left: 0.5rem;
+        overflow: hidden;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .mock-body {
+        display: grid;
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      .translation-card {
+        display: grid;
+        gap: 0.72rem;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 0.9rem;
+      }
+
+      .translation-card.bad {
+        border-color: rgba(183, 46, 37, 0.5);
+        background: #fff5f3;
+      }
+
+      .translation-card.good {
+        border-color: rgba(20, 116, 95, 0.45);
+        background: #f1fbf7;
+      }
+
+      .row {
+        display: flex;
+        min-width: 0;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.8rem;
+      }
+
+      .label {
+        color: var(--muted);
+        font-size: 0.76rem;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .status {
+        border-radius: 999px;
+        padding: 0.22rem 0.55rem;
+        font-size: 0.72rem;
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .status.bad {
+        background: var(--red);
+        color: #ffffff;
+      }
+
+      .status.good {
+        background: var(--green);
+        color: #ffffff;
+      }
+
+      .app-title {
+        font-size: clamp(1.35rem, 4vw, 2rem);
+        font-weight: 900;
+        line-height: 1.08;
+      }
+
+      .app-meta {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .fake-button {
+        display: inline-flex;
+        width: fit-content;
+        max-width: 100%;
+        align-items: center;
+        border: 2px solid var(--ink);
+        border-radius: 6px;
+        background: #ffffff;
+        padding: 0.45rem 0.65rem;
+        font-size: 0.85rem;
+        font-weight: 850;
+        line-height: 1.1;
+      }
+
+      .overflow-demo {
+        width: 12rem;
+        max-width: 100%;
+        overflow: hidden;
+        border: 2px solid var(--red);
+        border-radius: 6px;
+        background: #ffffff;
+        padding: 0.45rem 0.55rem;
+        color: var(--red);
+        font-size: 0.85rem;
+        font-weight: 850;
+        line-height: 1.1;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .section {
+        border-top: 1px solid var(--line);
+        padding: clamp(3rem, 6vw, 4.5rem) 0;
+      }
+
+      .section.alt {
+        background: #ffffff;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .section-layout,
+      .badge-layout {
+        display: grid;
+        align-items: center;
+        gap: clamp(2rem, 5vw, 4rem);
+        grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.28fr);
+      }
+
+      .section-head {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 1fr;
+        margin-bottom: 0;
+      }
+
+      h2 {
+        font-size: clamp(2rem, 5vw, 4rem);
+      }
+
+      .lead {
+        margin: 0;
+        color: var(--muted);
+        font-size: clamp(1.05rem, 2vw, 1.25rem);
+        line-height: 1.5;
+      }
+
+      .manifesto {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .section-layout .manifesto {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .manifesto.four-up {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .point {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--paper);
+        padding: 1rem;
+      }
+
+      .point h3 {
+        font-size: 1.14rem;
+      }
+
+      .point p {
+        margin: 0.6rem 0 0;
+        color: var(--muted);
+        font-size: 0.96rem;
+        line-height: 1.5;
+      }
+
+      .quote-band {
+        border-top: 2px solid var(--ink);
+        border-bottom: 2px solid var(--ink);
+        background: var(--yellow);
+        padding: clamp(3rem, 8vw, 5.5rem) 0;
+      }
+
+      .quote-inner {
+        display: grid;
+        width: min(1120px, calc(100% - 32px));
+        align-items: center;
+        gap: clamp(2rem, 6vw, 5rem);
+        grid-template-columns: minmax(180px, 0.42fr) minmax(0, 1fr);
+        margin: 0 auto;
+      }
+
+      .quote-label {
+        margin: 0;
+        font-size: 0.85rem;
+        font-weight: 950;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      blockquote {
+        margin: 0;
+        font-size: clamp(2.2rem, 5vw, 4.8rem);
+        font-weight: 950;
+        line-height: 1.08;
+        text-align: left;
+      }
+
+      .quote-copy {
+        max-width: 34rem;
+        margin: 1.25rem 0 0;
+        color: rgba(21, 23, 19, 0.72);
+        font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+        font-weight: 750;
+        line-height: 1.45;
+      }
+
+      .badge-area {
+        display: grid;
+        gap: 1.25rem;
+        align-items: center;
+      }
+
+      .badge-showcase {
+        display: grid;
+        justify-content: center;
+        min-height: 8rem;
+        align-items: center;
+        border: 2px solid var(--ink);
+        border-radius: var(--radius);
+        background: #ffffff;
+        padding: clamp(1.25rem, 4vw, 2.5rem);
+        box-shadow: 5px 5px 0 var(--ink);
+      }
+
+      .badge-preview {
+        display: block;
+        width: 159px;
+        max-width: 100%;
+        height: 20px;
+      }
+
+      .snippet {
+        display: grid;
+        gap: 0.8rem;
+      }
+
+      .code-copy {
+        position: relative;
+      }
+
+      .code-copy pre {
+        padding-right: 5rem;
+      }
+
+      .copy-button {
+        position: absolute;
+        top: 0.55rem;
+        right: 0.55rem;
+        min-height: 1.8rem;
+        border: 1px solid rgba(247, 248, 245, 0.28);
+        border-radius: 6px;
+        background: rgba(247, 248, 245, 0.12);
+        color: #f7f8f5;
+        cursor: pointer;
+        font: inherit;
+        font-size: 0.74rem;
+        font-weight: 850;
+        line-height: 1;
+        padding: 0.35rem 0.55rem;
+      }
+
+      .copy-button:hover,
+      .copy-button:focus-visible {
+        background: rgba(247, 248, 245, 0.2);
+      }
+
+      .copy-button.copied {
+        border-color: rgba(241, 189, 69, 0.82);
+        color: var(--yellow);
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        padding: 2rem 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .footer .container {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      @media (max-width: 860px) {
+        .hero,
+        .section-layout,
+        .badge-layout,
+        .quote-inner {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding-top: 2.6rem;
+        }
+
+        .manifesto,
+        .section-layout .manifesto {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
+        body {
+          font-size: 16px;
+        }
+
+        .nav {
+          align-items: flex-start;
+          flex-direction: column;
+          justify-content: center;
+          padding: 0.75rem 0;
+        }
+
+        .nav-links {
+          width: 100%;
+          justify-content: space-between;
+          gap: 0.6rem;
+        }
+
+        .button {
+          min-height: 2.35rem;
+          padding-inline: 0.7rem;
+          font-size: 0.86rem;
+        }
+
+        h1 {
+          max-width: 9ch;
+        }
+
+        .manifesto,
+        .section-layout .manifesto,
+        .manifesto.four-up {
+          grid-template-columns: 1fr;
+        }
+
+        .section,
+        .quote-band {
+          padding: clamp(2.5rem, 9vw, 4rem) 0;
+        }
+
+        blockquote {
+          font-size: clamp(2.4rem, 13vw, 4rem);
+        }
+
+        .footer .container {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header id="top" class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="#top" aria-label="Stop Translating My App">
+          <span class="brand-mark" aria-hidden="true">Aa</span>
+          <span>stoptranslatingmy.app</span>
+        </a>
+        <div class="nav-links">
+          <a class="button" href="#badge">Get badge</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <p class="eyebrow">An open letter</p>
+          <h1 id="hero-title">Stop translating my app.</h1>
+          <p class="hero-copy">
+            Localization requires ownership. Unreviewed automatic translation is
+            not welcome. Please do not rewrite app interfaces, names, docs,
+            metadata, commands, or support text and present the result as
+            official.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#why">Read why</a>
+            <a class="button secondary" href="#badge">Get badge</a>
+          </div>
+        </div>
+
+        <aside
+          class="mock-shell"
+          aria-label="Example of automatic translation changing app text"
+        >
+          <div class="mock-top">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="mock-url">example.app/settings/billing</span>
+          </div>
+          <div class="mock-body">
+            <div class="translation-card bad">
+              <div class="row">
+                <span class="label">Auto-translated</span>
+                <span class="status bad">Broken</span>
+              </div>
+              <div class="app-title">Stop the Working Area</div>
+              <div class="app-meta">Plan: Professional Team Space</div>
+              <div class="overflow-demo">
+                Delete settlement standing information forever
+              </div>
+            </div>
+            <div class="translation-card good">
+              <div class="row">
+                <span class="label">Supported copy</span>
+                <span class="status good">Supported</span>
+              </div>
+              <div class="app-title" translate="no">Workspace</div>
+              <div class="app-meta">Plan: Pro Team</div>
+              <div class="fake-button">Delete billing history</div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="quote-band" aria-label="Core position">
+        <div class="quote-inner">
+          <p class="quote-label">Core position</p>
+          <div>
+            <blockquote>
+              Translate apps properly, or leave the original text intact.
+            </blockquote>
+            <p class="quote-copy">
+              If nobody owns the wording, nobody should ship it as part of the
+              product experience.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="why" class="section">
+        <div class="container section-layout">
+          <div class="section-head">
+            <h2>Why It Matters</h2>
+            <p class="lead">
+              Translation is product work. It needs context, review, layout
+              testing, support ownership, and respect for terms that should
+              remain unchanged.
+            </p>
+          </div>
+
+          <div class="manifesto">
+            <article class="point">
+              <h3>Names Are Identifiers</h3>
+              <p>
+                App names, package names, API names, feature names, and commands
+                are often identifiers. Translating them can make the product
+                harder to find and discuss.
+              </p>
+            </article>
+            <article class="point">
+              <h3>Context Decides Meaning</h3>
+              <p>
+                Words like key, token, fork, watch, pin, draft, archive, and
+                release are easy to mistranslate when the translator cannot see
+                the product.
+              </p>
+            </article>
+            <article class="point">
+              <h3>Layouts Can Break</h3>
+              <p>
+                Automatic translation can overflow buttons, tabs, dialogs,
+                notifications, tables, and mobile views that were designed for
+                reviewed copy.
+              </p>
+            </article>
+            <article class="point">
+              <h3>Support Gets Confused</h3>
+              <p>
+                Users report problems with labels the developer never wrote.
+                Screenshots, documentation, and support replies stop matching
+                the app.
+              </p>
+            </article>
+            <article class="point">
+              <h3>Syntax Is Fragile</h3>
+              <p>
+                Placeholders like <code>{count}</code>, <code>%@</code>,
+                Markdown links, HTML attributes, CLI commands, and code snippets
+                must be preserved exactly.
+              </p>
+            </article>
+            <article class="point">
+              <h3>Risky Text Needs Review</h3>
+              <p>
+                Billing, deletion, permissions, privacy, security, consent, and
+                legal messages should not be silently rewritten by a browser,
+                store, mirror, or AI tool.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" aria-labelledby="not-against-title">
+        <div class="container section-layout">
+          <div class="section-head">
+            <h2 id="not-against-title">Not Anti-Translation</h2>
+            <p class="lead">
+              This is not about disrespecting languages or translators. It is
+              about ownership. If a project cannot maintain a translation, it
+              should not accept one just because someone submitted it.
+            </p>
+          </div>
+
+          <div class="manifesto four-up">
+            <article class="point">
+              <h3>No Translation PRs</h3>
+              <p>
+                Please do not send drive-by translation pull requests. If
+                maintainers cannot read, review, test, and update a translation,
+                it becomes unsupported product surface.
+              </p>
+            </article>
+            <article class="point">
+              <h3>Use Glossaries</h3>
+              <p>
+                Respect the terms a product already uses. Workspace, project,
+                team, space, and organization may mean different things.
+              </p>
+            </article>
+            <article class="point">
+              <h3>Make It Opt In</h3>
+              <p>
+                Let users request translation when they need it, and let
+                developers mark surfaces where rewriting would break the
+                product.
+              </p>
+            </article>
+            <article class="point">
+              <h3>Translations Need Owners</h3>
+              <p>
+                Community translations often start with care, then fall behind
+                as product copy changes. A stale translation can be worse than
+                no translation.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="badge" class="section">
+        <div class="container badge-layout">
+          <div class="section-head">
+            <h2>Use The Badge</h2>
+            <p class="lead">
+              Add a visible request to your README, docs, or app footer. Keep it
+              clear: automatic rewriting and unsupported translation
+              contributions are not accepted.
+            </p>
+          </div>
+
+          <div class="badge-area">
+            <div class="badge-showcase">
+              <img src="badge.svg" alt="Please Don't Translate" height="40" />
+            </div>
+            <div class="snippet">
+              <div class="code-copy">
+                <button class="copy-button" type="button">Copy</button>
+                <pre><code>&lt;a href="https://stoptranslatingmy.app"&gt;
+  &lt;img src="https://stoptranslatingmy.app/badge.svg" alt="Please Don't Translate" height="20"&gt;
+&lt;/a&gt;</code></pre>
+              </div>
+              <div class="code-copy">
+                <button class="copy-button" type="button">Copy</button>
+                <pre><code>[![Please Don't Translate](https://stoptranslatingmy.app/badge.svg)](https://stoptranslatingmy.app)</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <span>Stop Translating My App</span>
+        <span>Translate with care. Preserve what must not change.</span>
+      </div>
+    </footer>
+    <script>
+      const copyButtons = document.querySelectorAll(".copy-button");
+
+      async function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+          return;
+        }
+
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.top = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        textarea.remove();
+      }
+
+      copyButtons.forEach((button) => {
+        button.addEventListener("click", async () => {
+          const code = button.closest(".code-copy").querySelector("code");
+          await copyText(code.textContent);
+
+          button.textContent = "Copied";
+          button.classList.add("copied");
+
+          window.setTimeout(() => {
+            button.textContent = "Copy";
+            button.classList.remove("copied");
+          }, 1400);
+        });
+      });
+    </script>
+  </body>
+</html>
