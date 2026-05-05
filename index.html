@@ -570,8 +570,41 @@
 
       .footer .container {
         display: flex;
+        align-items: center;
         justify-content: space-between;
         gap: 1rem;
+      }
+
+      .footer-end {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.85rem;
+        text-align: right;
+      }
+
+      .footer-github {
+        display: inline-flex;
+        width: 2rem;
+        height: 2rem;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        color: var(--ink);
+        text-decoration: none;
+      }
+
+      .footer-github:hover,
+      .footer-github:focus-visible {
+        border-color: rgba(20, 116, 95, 0.45);
+        background: var(--paper);
+        color: var(--green);
+      }
+
+      .footer-github img {
+        width: 1.1rem;
+        height: 1.1rem;
       }
 
       @media (max-width: 860px) {
@@ -648,6 +681,11 @@
 
         .footer .container {
           flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .footer-end {
+          text-align: left;
         }
       }
     </style>
@@ -878,7 +916,24 @@
     <footer class="footer">
       <div class="container">
         <span>Stop Translating My App</span>
-        <span>Translate with care. Preserve what must not change.</span>
+        <span class="footer-end">
+          <span>Translate with care. Preserve what must not change.</span>
+          <a
+            class="footer-github"
+            href="https://github.com/do-not-translate/do-not-translate.github.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            referrerpolicy="no-referrer"
+            aria-label="GitHub repository: do-not-translate/do-not-translate.github.io"
+          >
+            <img
+              src="https://cdn.simpleicons.org/github"
+              alt=""
+              aria-hidden="true"
+              referrerpolicy="no-referrer"
+            />
+          </a>
+        </span>
       </div>
     </footer>
     <script>
