@@ -4,20 +4,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Stop Translating My App</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <meta
       name="description"
       content="An open letter asking browsers, platforms, mirrors, AI tools, and extensions not to ship unreviewed automatic translations as official app localization."
     />
-    <meta name="theme-color" content="#f7f8f5" />
+    <meta name="theme-color" content="#f4f7ee" />
     <style>
       :root {
         color-scheme: light;
-        --bg: #f7f8f5;
-        --paper: #ffffff;
-        --ink: #151713;
-        --muted: #5d665b;
-        --line: #d9dfd3;
-        --green: #14745f;
+        --bg: #f4f7ee;
+        --paper: #fffefa;
+        --ink: #142016;
+        --muted: #586552;
+        --line: #d7e1cf;
+        --green: #2f7d32;
+        --cactus: #2f7d32;
+        --cactus-dark: #1f4f2c;
+        --cactus-soft: #e6f0df;
         --yellow: #f1bd45;
         --blue: #2f6fbb;
         --radius: 8px;
@@ -48,7 +52,7 @@
 
       a {
         color: inherit;
-        text-decoration-color: rgba(20, 116, 95, 0.45);
+        text-decoration-color: rgba(47, 125, 50, 0.45);
         text-decoration-thickness: 0.09em;
         text-underline-offset: 0.18em;
       }
@@ -60,7 +64,7 @@
       code {
         border: 1px solid var(--line);
         border-radius: 6px;
-        background: #f3f5ef;
+        background: var(--cactus-soft);
         padding: 0.1rem 0.32rem;
         font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
         font-size: 0.88em;
@@ -91,7 +95,7 @@
         top: 0;
         z-index: 10;
         border-bottom: 1px solid rgba(21, 23, 19, 0.09);
-        background: rgba(247, 248, 245, 0.88);
+        background: rgba(244, 247, 238, 0.88);
         backdrop-filter: blur(14px);
       }
 
@@ -119,11 +123,18 @@
         width: 2.2rem;
         aspect-ratio: 1;
         place-items: center;
-        border: 2px solid var(--ink);
+        border: 2px solid var(--cactus-dark);
         border-radius: var(--radius);
-        background: var(--yellow);
-        box-shadow: 3px 3px 0 var(--ink);
-        font-size: 1.05rem;
+        background: var(--cactus);
+        box-shadow: 3px 3px 0 var(--cactus-dark);
+        color: #ffffff;
+      }
+
+      .brand-icon {
+        display: block;
+        width: 1.45rem;
+        height: 1.45rem;
+        fill: currentColor;
       }
 
       .nav-links {
@@ -143,12 +154,12 @@
         min-height: 2.6rem;
         align-items: center;
         justify-content: center;
-        border: 2px solid var(--ink);
+        border: 2px solid var(--cactus-dark);
         border-radius: var(--radius);
-        background: var(--ink);
+        background: var(--cactus);
         color: #ffffff;
         padding: 0.55rem 0.9rem;
-        box-shadow: 3px 3px 0 rgba(21, 23, 19, 0.18);
+        box-shadow: 3px 3px 0 rgba(31, 79, 44, 0.2);
         font-size: 0.95rem;
         font-weight: 800;
         line-height: 1.1;
@@ -297,9 +308,10 @@
       }
 
       .quote-band {
-        border-top: 2px solid var(--ink);
-        border-bottom: 2px solid var(--ink);
-        background: var(--yellow);
+        border-top: 2px solid var(--cactus-dark);
+        border-bottom: 2px solid var(--cactus-dark);
+        background: var(--cactus);
+        color: #ffffff;
         padding: clamp(3rem, 8vw, 5.5rem) 0;
       }
 
@@ -331,7 +343,7 @@
       .quote-copy {
         max-width: 34rem;
         margin: 1.25rem 0 0;
-        color: rgba(21, 23, 19, 0.72);
+        color: rgba(255, 255, 255, 0.78);
         font-size: clamp(1.05rem, 1.8vw, 1.3rem);
         font-weight: 750;
         line-height: 1.45;
@@ -448,7 +460,7 @@
 
       .footer-github:hover,
       .footer-github:focus-visible {
-        border-color: rgba(20, 116, 95, 0.45);
+        border-color: rgba(47, 125, 50, 0.45);
         background: var(--paper);
         color: var(--green);
       }
@@ -544,7 +556,11 @@
     <header id="top" class="site-header">
       <nav class="nav" aria-label="Main navigation">
         <a class="brand" href="#top" aria-label="Stop Translating My App">
-          <span class="brand-mark" aria-hidden="true">Aa</span>
+          <span class="brand-mark" aria-hidden="true">
+            <svg class="brand-icon" viewBox="0 0 24 24" focusable="false">
+              <path d="M9.5 22v-6H7a5 5 0 0 1-5-5V8a2 2 0 0 1 4 0v3a1 1 0 0 0 1 1h2.5V5.5a3.5 3.5 0 0 1 7 0V14H17a1 1 0 0 0 1-1V9a2 2 0 0 1 4 0v4a5 5 0 0 1-5 5h-.5v4h-7Z" />
+            </svg>
+          </span>
           <span>stoptranslatingmy.app</span>
         </a>
         <div class="nav-links">
