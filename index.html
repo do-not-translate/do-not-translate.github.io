@@ -18,10 +18,8 @@
         --muted: #5d665b;
         --line: #d9dfd3;
         --green: #14745f;
-        --red: #b72e25;
         --yellow: #f1bd45;
         --blue: #2f6fbb;
-        --shadow: 0 18px 48px rgba(21, 23, 19, 0.12);
         --radius: 8px;
         font-family:
           ui-sans-serif,
@@ -173,13 +171,9 @@
       }
 
       .hero {
-        display: grid;
-        width: min(1120px, calc(100% - 32px));
-        align-items: center;
-        gap: clamp(2rem, 6vw, 5rem);
-        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+        width: min(920px, calc(100% - 32px));
         margin: 0 auto;
-        padding: clamp(2rem, 5vw, 4rem) 0;
+        padding: clamp(3.25rem, 8vw, 6.25rem) 0 clamp(3rem, 7vw, 5rem);
       }
 
       .eyebrow {
@@ -228,150 +222,6 @@
         flex-wrap: wrap;
         gap: 0.8rem;
         margin-top: 2rem;
-      }
-
-      .mock-shell {
-        position: relative;
-        border: 2px solid var(--ink);
-        border-radius: var(--radius);
-        background: var(--paper);
-        box-shadow: var(--shadow);
-        overflow: hidden;
-      }
-
-      .mock-top {
-        display: flex;
-        align-items: center;
-        gap: 0.35rem;
-        border-bottom: 2px solid var(--ink);
-        background: #edf2e8;
-        padding: 0.72rem;
-      }
-
-      .dot {
-        width: 0.72rem;
-        aspect-ratio: 1;
-        border: 1.5px solid var(--ink);
-        border-radius: 50%;
-        background: var(--yellow);
-      }
-
-      .dot:nth-child(2) {
-        background: #f16b51;
-      }
-
-      .dot:nth-child(3) {
-        background: #64bfa7;
-      }
-
-      .mock-url {
-        min-width: 0;
-        margin-left: 0.5rem;
-        overflow: hidden;
-        color: var(--muted);
-        font-size: 0.78rem;
-        font-weight: 700;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-
-      .mock-body {
-        display: grid;
-        gap: 1rem;
-        padding: 1rem;
-      }
-
-      .translation-card {
-        display: grid;
-        gap: 0.72rem;
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        padding: 0.9rem;
-      }
-
-      .translation-card.bad {
-        border-color: rgba(183, 46, 37, 0.5);
-        background: #fff5f3;
-      }
-
-      .translation-card.good {
-        border-color: rgba(20, 116, 95, 0.45);
-        background: #f1fbf7;
-      }
-
-      .row {
-        display: flex;
-        min-width: 0;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.8rem;
-      }
-
-      .label {
-        color: var(--muted);
-        font-size: 0.76rem;
-        font-weight: 900;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-      }
-
-      .status {
-        border-radius: 999px;
-        padding: 0.22rem 0.55rem;
-        font-size: 0.72rem;
-        font-weight: 900;
-        line-height: 1;
-      }
-
-      .status.bad {
-        background: var(--red);
-        color: #ffffff;
-      }
-
-      .status.good {
-        background: var(--green);
-        color: #ffffff;
-      }
-
-      .app-title {
-        font-size: clamp(1.35rem, 4vw, 2rem);
-        font-weight: 900;
-        line-height: 1.08;
-      }
-
-      .app-meta {
-        color: var(--muted);
-        font-size: 0.9rem;
-      }
-
-      .fake-button {
-        display: inline-flex;
-        width: fit-content;
-        max-width: 100%;
-        align-items: center;
-        border: 2px solid var(--ink);
-        border-radius: 6px;
-        background: #ffffff;
-        padding: 0.45rem 0.65rem;
-        font-size: 0.85rem;
-        font-weight: 850;
-        line-height: 1.1;
-      }
-
-      .overflow-demo {
-        width: 12rem;
-        max-width: 100%;
-        overflow: hidden;
-        border: 2px solid var(--red);
-        border-radius: 6px;
-        background: #ffffff;
-        padding: 0.45rem 0.55rem;
-        color: var(--red);
-        font-size: 0.85rem;
-        font-weight: 850;
-        line-height: 1.1;
-        text-overflow: ellipsis;
-        white-space: nowrap;
       }
 
       .section {
@@ -539,10 +389,10 @@
         top: 0.55rem;
         right: 0.55rem;
         min-height: 1.8rem;
-        border: 1px solid rgba(247, 248, 245, 0.28);
+        border: 1px solid rgba(247, 248, 245, 0.8);
         border-radius: 6px;
-        background: rgba(247, 248, 245, 0.12);
-        color: #f7f8f5;
+        background: rgba(247, 248, 245, 0.88);
+        color: #10130f;
         cursor: pointer;
         font: inherit;
         font-size: 0.74rem;
@@ -553,12 +403,13 @@
 
       .copy-button:hover,
       .copy-button:focus-visible {
-        background: rgba(247, 248, 245, 0.2);
+        background: #ffffff;
       }
 
       .copy-button.copied {
-        border-color: rgba(241, 189, 69, 0.82);
-        color: var(--yellow);
+        border-color: var(--yellow);
+        background: rgba(241, 189, 69, 0.92);
+        color: var(--ink);
       }
 
       .footer {
@@ -608,7 +459,6 @@
       }
 
       @media (max-width: 860px) {
-        .hero,
         .section-layout,
         .badge-layout,
         .quote-inner {
@@ -719,40 +569,6 @@
             <a class="button secondary" href="#badge">Get badge</a>
           </div>
         </div>
-
-        <aside
-          class="mock-shell"
-          aria-label="Example of automatic translation changing app text"
-        >
-          <div class="mock-top">
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="mock-url">example.app/settings/billing</span>
-          </div>
-          <div class="mock-body">
-            <div class="translation-card bad">
-              <div class="row">
-                <span class="label">Auto-translated</span>
-                <span class="status bad">Broken</span>
-              </div>
-              <div class="app-title">Stop the Working Area</div>
-              <div class="app-meta">Plan: Professional Team Space</div>
-              <div class="overflow-demo">
-                Delete settlement standing information forever
-              </div>
-            </div>
-            <div class="translation-card good">
-              <div class="row">
-                <span class="label">Supported copy</span>
-                <span class="status good">Supported</span>
-              </div>
-              <div class="app-title" translate="no">Workspace</div>
-              <div class="app-meta">Plan: Pro Team</div>
-              <div class="fake-button">Delete billing history</div>
-            </div>
-          </div>
-        </aside>
       </section>
 
       <section class="quote-band" aria-label="Core position">
